@@ -9,12 +9,13 @@ package solveur;
  *
  */
 public interface ISolveur {
+
     /**
      * Teste la validité de la grille.
      *
      * @return boolean
      */
-    boolean verifierGrille();  
+    boolean verifierGrille();
 
     /**
      * Résoud la grille passée en paramètre.
