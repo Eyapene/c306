@@ -9,7 +9,6 @@ package solveur;
  *
  */
 public interface ISolveur {
-    
     /**
      * Teste la validité de la grille.
      *
@@ -25,17 +24,17 @@ public interface ISolveur {
      * @return boolean
      */
     boolean resoudre();
-    
+
     /**
      * Verifie si la grille est résolue.
      *
      *@throws IllegalArgumentException si la grille non valide
      *@return boolean
      */
-    public boolean resolu();    
+    boolean resolu();
 
     /**
      * Affiche la solution trouvée à la grille.
      */
-    void afficherSolution();   
+    void afficherSolution(); 
 }
