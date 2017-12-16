@@ -29,7 +29,7 @@ public interface InterfaceSolveur {
     /**
      * Verifie si la grille est résolue.
      *
-     *@throws IllegalArgumentException si grille non valide
+     *@throws IllegalArgumentException si la grille non valide
      *@return boolean
      */
     public boolean resolu();    
