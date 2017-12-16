@@ -8,13 +8,15 @@ package solveur;
  * @author BOKOBOSSO Eyapènè
  *
  */
-public interface ISolveur {
+public interface ISolveur {  
+    
+    
     /**
      * Teste la validité de la grille.
      *
      * @return boolean
      */
-    boolean verifierGrille();
+    boolean verifierGrille();  
 
     /**
      * Résoud la grille passée en paramètre.
@@ -23,7 +25,7 @@ public interface ISolveur {
      * valable ou si aucune solution n'a pu être calculée
      * @return boolean
      */
-    boolean resoudre();
+    boolean resoudre();  
 
     /**
      * Verifie si la grille est résolue.
@@ -31,10 +33,10 @@ public interface ISolveur {
      *@throws IllegalArgumentException si la grille non valide
      *@return boolean
      */
-    boolean resolu();
+    boolean resolu();  
 
     /**
      * Affiche la solution trouvée à la grille.
      */
-    void afficherSolution();
+    void afficherSolution();  
 }
