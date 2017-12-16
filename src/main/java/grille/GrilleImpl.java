@@ -9,7 +9,7 @@ package grille;
  * @author BOKOBOSSO Eyapènè
  *
  */
-public class GrilleImpl implements Grille {
+public final class GrilleImpl implements Grille {
 
     /**
      * Tableau permettant de representer la grille Sudoku.
