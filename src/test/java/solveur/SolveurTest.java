@@ -1,10 +1,10 @@
 package solveur;
 
-import grille.GrilleImpl;
+import static org.junit.Assert.*;
+
 import org.junit.Test;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.fail;
+
+import grille.GrilleImpl;
 
 /**
  *
@@ -40,6 +40,11 @@ public final class SolveurTest {
             {'2', '8', '7', '4', '1', '9', '6', '3', '5'},
             {'3', '4', '5', '2', '8', '6', '1', '7', '9'}};
     */
+
+    /**
+     * Grille incorrecte.
+     * 5 est présent 2 fois sur la première colonne.
+     */
     private static final char[][] SUDOKU_INCORRECT
             = {{'5', '3', '4', '6', '7', '8', '9', '1', '2'},
             {'6', '7', '2', '1', '9', '5', '3', '4', '8'},
@@ -50,7 +55,7 @@ public final class SolveurTest {
             {'9', '6', '1', '5', '3', '7', '2', '8', '4'},
             {'2', '8', '7', '4', '1', '9', '6', '3', '5'},
             {'3', '4', '5', '2', '8', '6', '1', '7', '9'}};
-    
+
     private static final char[][] SUDOKU_INCORRECT2
             = {{'5', '3', '4', '6', '7', '8', '9', '1', '2', 'x'},
             {'6', '7', '2', '1', '9', '5', '3', '4', '8', '1'},
@@ -88,7 +93,7 @@ public final class SolveurTest {
      * Test de la méthode resolu()avec exception pour une grille incorrecte.
      */  
     @Test
-    public void testResoluAvecException(){
+    public void testResoluAvecException() {
         try {
         SolveurImpl solveur = 
                 new SolveurImpl(new GrilleImpl(SUDOKU_INCORRECT));
@@ -115,5 +120,39 @@ public final class SolveurTest {
         SolveurImpl solveur3 = 
                 new SolveurImpl(new GrilleImpl(SUDOKU_INCORRECT2));
         solveur3.afficherSolution();
+    }
+    
+    /**
+     * Test de la méthode verifierGrille().
+     * 
+     */
+    @Test
+    public void testVerifierGrille(){
+    	SolveurImpl solveur = new SolveurImpl(new GrilleImpl(SUDOKU_INCORRECT));
+    	assertEquals(false, solveur.verifierGrille());
+    }
+    
+    /**
+     * Test de la méthode resoudre()
+     */
+    @Test
+    public void testResoudre(){
+    	SolveurImpl solveur = new SolveurImpl(new GrilleImpl(SUDOKU_INCORRECT));
+    	assertEquals(false, solveur.resoudre());
+    }
+    
+    /**
+     * Test de la méthode resoudre(). Levée d'exception.
+     */
+    @Test
+    public void testResoudreLeveeDException(){
+    	try {
+            SolveurImpl solveur = 
+                    new SolveurImpl(new GrilleImpl(SUDOKU_INCORRECT));
+            solveur.resoudre();
+            fail("L'exception aurait du être levé pour grille non valide.");
+            } catch (IllegalArgumentException e) {
+                //rien a faire, c'est normal qu'on ait l'exception
+            }
     }
 }
