@@ -36,5 +36,5 @@ public interface ISolveur {
     /**
      * Affiche la solution trouvée à la grille.
      */
-    void afficherSolution(); 
+    void afficherSolution();
 }
