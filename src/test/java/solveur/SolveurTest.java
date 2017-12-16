@@ -85,7 +85,7 @@ public final class SolveurTest {
     public void testResolu(){
         SolveurImpl solveur = 
                 new SolveurImpl(new GrilleImpl(SUDOKU_CORRECT));
-        assertTrue(solveur.resolu());
+        assertEquals(false, solveur.resolu());
     }
 
     
@@ -109,17 +109,7 @@ public final class SolveurTest {
      */
     @Test
     public void testafficherSolution() {
-        //test avec une grille incorrecte
-        SolveurImpl solveur = new SolveurImpl(new GrilleImpl(SUDOKU_INCORRECT));
-        solveur.afficherSolution();
-        //test avec une grille non complète
-        SolveurImpl solveur2 = 
-                new SolveurImpl(new GrilleImpl(SUDOKU_CORRECT));
-        solveur2.afficherSolution();
-        //cas de grille à dimensions incorrecte (msg d'erreur attendu)
-        SolveurImpl solveur3 = 
-                new SolveurImpl(new GrilleImpl(SUDOKU_INCORRECT2));
-        solveur3.afficherSolution();
+        fail("Erreur Aucune solution");
     }
     
     /**

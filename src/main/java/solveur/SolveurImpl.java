@@ -86,4 +86,3 @@ public final class SolveurImpl implements ISolveur {
     }
 
 }
-
