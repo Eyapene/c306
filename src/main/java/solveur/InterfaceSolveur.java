@@ -20,7 +20,7 @@ public interface InterfaceSolveur {
     /**
      * Résoud la grille passée en paramètre.
      *
-     * @throws IllegalArgumentException si le grille à résoudre n'est pas
+     * @throws IllegalArgumentException si la grille à résoudre n'est pas
      * valable ou si aucune solution n'a pu être calculée
      * @return boolean
      */
