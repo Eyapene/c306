@@ -50,7 +50,11 @@ public final class SolveurImpl implements ISolveur {
     public void setGrille(final GrilleImpl newgrille) {
         this.grille = newgrille;
     }
-
+    /**
+     * Verifier la validité de la grille.
+     *
+     * @return true si la grille est valide, false sinon
+     */
     public boolean verifierGrille() {
         char[][] grillecontent = grille.getGrille();
         for (int i = 0; i < grille.getDimension(); i = i + 1) {

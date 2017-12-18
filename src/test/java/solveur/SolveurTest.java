@@ -16,6 +16,9 @@ import grille.GrilleImpl;
  */
 public final class SolveurTest {
 
+    /**
+     * Grille correcte.
+     */
     private static final char[][] SUDOKU_CORRECT
             = {{'5', '3', '4', '6', '7', '8', '9', '1', '2'},
             {'6', '7', '2', '1', '9', '5', '3', '4', '8'},
@@ -41,6 +44,9 @@ public final class SolveurTest {
             {'2', '8', '7', '4', '1', '9', '6', '3', '5'},
             {'3', '4', '5', '2', '8', '6', '1', '7', '9'}};
 
+    /**
+     * Grille incorrecte. 2 est présent 2 fois sur la troisième ligne.
+     */
     private static final char[][] SUDOKU_INCORRECT2
             = {{'5', '3', '4', '6', '7', '8', '9', '1', '2', 'x'},
             {'6', '7', '2', '1', '9', '5', '3', '4', '8', '1'},
@@ -52,6 +58,9 @@ public final class SolveurTest {
             {'2', '8', '7', '4', '1', '9', '6', '3', '5', '2'},
             {'3', '4', '5', '2', '8', '6', '1', '7', '9', '9'}};
 
+    /**
+     * Grille incorrecte. T et X présent dans la grille.
+     */
     private static final char[][] SUDOKU_INCORRECT3
             = {{'X', 'T', '4', '6', '7', '8', '9', '1', '2'},
             {'X', '7', '@', '1', '9', '5', '3', '4', '8'},
