@@ -1,6 +1,6 @@
 package solveur;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 import org.junit.Test;
 
@@ -88,6 +88,50 @@ public final class SolveurTest {
     public void testResoudre() {
         SolveurImpl solveur = new SolveurImpl(new GrilleImpl(SUDOKU_CORRECT));
         assertEquals(true, solveur.resoudre());
+    }
+
+    /**
+     * Test de la méthode resolu() pour une grille complète.
+     */
+    @Test
+    public void testResolu() {
+        SolveurImpl solveur
+                = new SolveurImpl(new GrilleImpl(SUDOKU_CORRECT));
+        boolean solution = solveur.resolu();
+        assertEquals(true, solution);
+    }
+
+    /**
+     * Test de la méthode resolu()avec exception pour une grille incorrecte.
+     */
+    @Test
+    public void testResoluAvecException() {
+        try {
+            SolveurImpl solveur
+                    = new SolveurImpl(new GrilleImpl(SUDOKU_INCORRECT));
+            solveur.resolu();
+            fail("L'exception aurait du être levé pour grille non valide");
+        } catch (IllegalArgumentException e) {
+            //rien a faire, c'est normal qu'on ait l'exception
+        }
+    }
+
+    /**
+     * Test de la méthode afficherSolution().
+     */
+    @Test
+    public void testafficherSolution() {
+        //test avec une grille incorrecte
+        SolveurImpl solveur = new SolveurImpl(new GrilleImpl(SUDOKU_INCORRECT));
+        solveur.afficherSolution();
+        //test avec une grille non complète
+        SolveurImpl solveur2
+                = new SolveurImpl(new GrilleImpl(SUDOKU_CORRECT));
+        solveur2.afficherSolution();
+        //cas de grille à dimensions incorrecte (msg d'erreur attendu)
+        SolveurImpl solveur3
+                = new SolveurImpl(new GrilleImpl(SUDOKU_INCORRECT2));
+        solveur3.afficherSolution();
     }
 
 }
