@@ -34,14 +34,27 @@ public final class SolveurImpl implements ISolveur {
     }
 
     /**
-     * Vérifie la validité de la grille à résoudre.
+     * Getter de la grille.
      *
-     * @return boolean
+     * @return GrilleImpl
      */
+    public GrilleImpl getGrille() {
+        return grille;
+    }
+
+    /**
+     * Setter de la gille.
+     *
+     * @param newgrille GrilleImpl
+     */
+    public void setGrille(final GrilleImpl newgrille) {
+        this.grille = newgrille;
+    }
+
     public boolean verifierGrille() {
         char[][] grillecontent = grille.getGrille();
-        for (int i = 0; i <grille.getDimension(); i=i+1) {
-            for (int j = 0; j < grille.getDimension(); j=j+1) {
+        for (int i = 0; i < grille.getDimension(); i = i + 1) {
+            for (int j = 0; j < grille.getDimension(); j = j + 1) {
                 if (grillecontent[i][j] != Grille.EMPTY) {
                     char tmp = grillecontent[i][j];
                     grillecontent[i][j] = Grille.EMPTY;
@@ -77,6 +90,23 @@ public final class SolveurImpl implements ISolveur {
      * @return boolean
      */
     public boolean resoudre() {
+        for (int i = 0; i < grille.getDimension(); i++) {
+            for (int j = 0; j < grille.getDimension(); j++) {
+                if (grille.getGrille()[i][j] == GrilleImpl.EMPTY) {
+                    for (int k = 0; k < grille.getDimension(); k = k + 1) {
+                        char val = Grille.POSSIBLE_9[k];
+                        try {
+                            grille.setValue(i, j, val);
+                            if (resoudre()) {
+                                return true;
+                            }
+                        } catch (IllegalArgumentException ex) {
+                        }
+                    }
+                    return false;
+                }
+            }
+        }
         return true;
     }
 
