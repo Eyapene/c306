@@ -28,29 +28,6 @@ public final class SolveurImpl implements ISolveur {
     }
 
     /**
-     * constructeur par défaut de la classe.
-     */
-    public SolveurImpl() {
-    }
-
-    /**
-     * Getter de la grille.
-     *
-     * @return GrilleImpl
-     */
-    public GrilleImpl getGrille() {
-        return grille;
-    }
-
-    /**
-     * Setter de la gille.
-     *
-     * @param newgrille GrilleImpl
-     */
-    public void setGrille(final GrilleImpl newgrille) {
-        this.grille = newgrille;
-    }
-    /**
      * Verifier la validité de la grille.
      *
      * @return true si la grille est valide, false sinon
