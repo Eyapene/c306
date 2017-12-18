@@ -1,6 +1,6 @@
 package solveur;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
@@ -68,40 +68,7 @@ public final class SolveurTest {
      */
     @Test
     public void testConstructeurGrilleImpl() {
-        fail("Erreur. Aucun constructeur pour l'instant.");
-    }
-
-    /**
-     * Test de la méthode resolu() pour une grille non complète.
-     */
-    @Test
-    public void testResolu() {
-        SolveurImpl solveur
-                = new SolveurImpl(new GrilleImpl(SUDOKU_CORRECT));
-        assertEquals(false, solveur.resolu());
-    }
-
-    /**
-     * Test de la méthode resolu()avec exception pour une grille incorrecte.
-     */
-    @Test
-    public void testResoluAvecException() {
-        try {
-            SolveurImpl solveur
-                    = new SolveurImpl(new GrilleImpl(SUDOKU_INCORRECT));
-            solveur.resolu();
-            fail("L'exception aurait du être levé pour grille non valide");
-        } catch (IllegalArgumentException e) {
-            //rien a faire, c'est normal qu'on ait l'exception
-        }
-    }
-
-    /**
-     * Test de la méthode afficherSolution().
-     */
-    @Test
-    public void testafficherSolution() {
-        fail("Erreur Aucune solution");
+        SolveurImpl solveur = new SolveurImpl(new GrilleImpl(SUDOKU_CORRECT));
     }
 
     /**
@@ -115,11 +82,12 @@ public final class SolveurTest {
     }
 
     /**
-     * Test de la méthode resoudre()
+     * Test de la méthode resoudre().
      */
     @Test
     public void testResoudre() {
-        SolveurImpl solveur = new SolveurImpl(new GrilleImpl(SUDOKU_INCORRECT));
-        assertEquals(false, solveur.resoudre());
+        SolveurImpl solveur = new SolveurImpl(new GrilleImpl(SUDOKU_CORRECT));
+        assertEquals(true, solveur.resoudre());
     }
+
 }
