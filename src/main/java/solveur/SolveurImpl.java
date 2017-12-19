@@ -38,7 +38,6 @@ public final class SolveurImpl implements ISolveur {
             for (int j = 0; j < grille.getDimension(); j = j + 1) {
                 if (grillecontent[i][j] != Grille.EMPTY) {
                     char tmp = grillecontent[i][j];
-                    System.out.println("tmp = " + tmp);
                     grillecontent[i][j] = Grille.EMPTY;
                     try {
                         if (!grille.possible(i, j, tmp)) {
@@ -98,7 +97,6 @@ public final class SolveurImpl implements ISolveur {
      */
     public void afficherSolution() {
         int part = 3;
-        try {
             for (int i = 0; i < grille.getDimension(); ++i) {
                 if (i % part == 0) {
                     System.out.println(" -----------------------");
@@ -113,9 +111,6 @@ public final class SolveurImpl implements ISolveur {
                 System.out.println("|");
             }
             System.out.println(" -----------------------");
-        } catch (IllegalArgumentException e) {
-            System.out.println("Erreur. Grille non valide");
-        }
     }
 
 }
