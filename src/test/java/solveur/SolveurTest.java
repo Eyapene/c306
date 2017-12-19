@@ -89,7 +89,8 @@ public final class SolveurTest {
      */
     @Test
     public void testVerifierGrille() {
-        SolveurImpl solveur = new SolveurImpl(new GrilleImpl(GRILLE_INCORRECTE));
+        SolveurImpl solveur =
+                new SolveurImpl(new GrilleImpl(GRILLE_INCORRECTE));
         assertEquals(false, solveur.verifierGrille());
     }
 

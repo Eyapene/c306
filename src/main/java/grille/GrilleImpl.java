@@ -167,7 +167,7 @@ public final class GrilleImpl implements Grille {
                 return true;
             }
         }
-        return false;
+        return caractere == EMPTY;
     }
 
 }

@@ -38,6 +38,7 @@ public final class SolveurImpl implements ISolveur {
             for (int j = 0; j < grille.getDimension(); j = j + 1) {
                 if (grillecontent[i][j] != Grille.EMPTY) {
                     char tmp = grillecontent[i][j];
+                    System.out.println("tmp = " + tmp);
                     grillecontent[i][j] = Grille.EMPTY;
                     try {
                         if (!grille.possible(i, j, tmp)) {
@@ -56,7 +57,7 @@ public final class SolveurImpl implements ISolveur {
     /**
      * Verification de la résolution de la grille.
      *
-     * @return true si grille resolu, false sinon
+     * @return true si grille resolue, false sinon
      */
     public boolean resolu() {
         if (!verifierGrille()) {
@@ -98,25 +99,20 @@ public final class SolveurImpl implements ISolveur {
     public void afficherSolution() {
         int part = 3;
         try {
-            if (resolu()) {
-                for (int i = 0; i < grille.getDimension(); ++i) {
-                    if (i % part == 0) {
-                        System.out.println(" -----------------------");
-                    }
-                    for (int j = 0; j < grille.getDimension(); ++j) {
-                        if (j % part == 0) {
-                            System.out.print("| ");
-                        }
-                        System.out.print(grille.getGrille()[i][j]);
-                        System.out.print(' ');
-                    }
-                    System.out.println("|");
+            for (int i = 0; i < grille.getDimension(); ++i) {
+                if (i % part == 0) {
+                    System.out.println(" -----------------------");
                 }
-                System.out.println(" -----------------------");
-            } else {
-                System.out.println("Aucune solution trouvée.");
+                for (int j = 0; j < grille.getDimension(); ++j) {
+                    if (j % part == 0) {
+                        System.out.print("| ");
+                    }
+                    System.out.print(grille.getGrille()[i][j]);
+                    System.out.print(' ');
+                }
+                System.out.println("|");
             }
-
+            System.out.println(" -----------------------");
         } catch (IllegalArgumentException e) {
             System.out.println("Erreur. Grille non valide");
         }
