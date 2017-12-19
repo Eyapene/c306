@@ -73,19 +73,20 @@ public final class SolveurImpl implements ISolveur {
     public boolean resoudre() {
         for (int i = 0; i < grille.getDimension(); i++) {
             for (int j = 0; j < grille.getDimension(); j++) {
-                if (grille.getGrille()[i][j] == GrilleImpl.EMPTY) {
-                    for (int k = 0; k < grille.getDimension(); k = k + 1) {
-                        char val = Grille.POSSIBLE_9[k];
-                        try {
-                            grille.setValue(i, j, val);
-                            if (resoudre()) {
-                                return true;
-                            }
-                        } catch (IllegalArgumentException ex) {
-                        }
-                    }
-                    return false;
-                }
+//                if (grille.getGrille()[i][j] == GrilleImpl.EMPTY) {
+//                    for (int k = 0; k < grille.getDimension(); k = k + 1) {
+//                        char val = Grille.POSSIBLE_9[k];
+//                        try {
+//                            grille.setValue(i + 1, j + 1, val);
+//                            if (resoudre()) {
+//                                return true;
+//                            }
+//                        } catch (IllegalArgumentException ex) {
+//                            System.out.println("Erreur. Valeur non valide.");
+//                        }
+//                    }
+//                    return false;
+//                }
             }
         }
         return true;

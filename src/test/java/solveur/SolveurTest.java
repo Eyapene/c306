@@ -17,9 +17,9 @@ import grille.GrilleImpl;
 public final class SolveurTest {
 
     /**
-     * Grille correcte et résolue.
+     * Grille correcte.
      */
-    private static final char[][] SUDOKU_CORRECT_RESOLUE
+    private static final char[][] GRILLE_CORRECTE
             = {{'5', '3', '4', '6', '7', '8', '9', '1', '2'},
             {'6', '7', '2', '1', '9', '5', '3', '4', '8'},
             {'1', '9', '8', '3', '4', '2', '5', '6', '7'},
@@ -29,23 +29,11 @@ public final class SolveurTest {
             {'9', '6', '1', '5', '3', '7', '2', '8', '4'},
             {'2', '8', '7', '4', '1', '9', '6', '3', '5'},
             {'3', '4', '5', '2', '8', '6', '1', '7', '9'}};
-    
-    private static final char[][] SUDOKU_CORRECT_NON_RESOLU = 
-        {{'@', '@', '@', '@', '@', '6', '@', '7', '@'},
-         {'@', '7', '@', '9', '@', '4', '@', '3', '@'},
-         {'4', '@', '@', '@', '@', '@', '@', '@', '1'},
-         {'3', '@', '6', '@', '@', '@', '@', '@', '@'},
-         {'@', '@', '2', '8', '@', '1', '9', '@', '@'},
-         {'@', '@', '@', '@', '@', '@', '1', '@', '5'},
-         {'1', '@', '@', '@', '@', '@', '@', '@', '7'},
-         {'@', '3', '@', '5', '@', '8', '@', '9', '@'},
-         {'@', '5', '@', '4', '@', '@', '@', '@', '@'},
-        };
 
     /**
      * Grille incorrecte. 5 est présent 2 fois sur la première colonne.
      */
-    private static final char[][] SUDOKU_INCORRECT
+    private static final char[][] GRILLE_INCORRECTE
             = {{'5', '3', '4', '6', '7', '8', '9', '1', '2'},
             {'6', '7', '2', '1', '9', '5', '3', '4', '8'},
             {'5', '9', '8', '3', '4', '2', '5', '2', '7'},
@@ -61,7 +49,7 @@ public final class SolveurTest {
      * 2 est présent 2 fois sur la troisième ligne.
      * Des caractères non autorisés sont présents dans la grille (x, g).
      */
-    private static final char[][] SUDOKU_INCORRECT2
+    private static final char[][] GRILLE_INCORRECTE_2
             = {{'5', '3', '4', '6', '7', '8', '9', '1', '2', 'x'},
             {'6', '7', '2', '1', '9', '5', '3', '4', '8', '1'},
             {'5', '9', '8', '3', '4', '2', '5', '2', '7', 't'},
@@ -75,7 +63,7 @@ public final class SolveurTest {
     /**
      * Grille incorrecte. T et X présents dans la grille.
      */
-    private static final char[][] SUDOKU_INCORRECT3
+    private static final char[][] GRILLE_INCORRECTE_3
             = {{'X', 'T', '4', '6', '7', '8', '9', '1', '2'},
             {'X', '7', '@', '1', '9', '5', '3', '4', '8'},
             {'1', '9', '8', '3', '@', '2', '5', '6', '7'},
@@ -91,7 +79,8 @@ public final class SolveurTest {
      */
     @Test
     public void testConstructeurGrilleImpl() {
-        SolveurImpl solveur = new SolveurImpl(new GrilleImpl(SUDOKU_CORRECT_RESOLUE));
+        SolveurImpl solveur =
+                new SolveurImpl(new GrilleImpl(GRILLE_CORRECTE));
     }
 
     /**
@@ -100,7 +89,7 @@ public final class SolveurTest {
      */
     @Test
     public void testVerifierGrille() {
-        SolveurImpl solveur = new SolveurImpl(new GrilleImpl(SUDOKU_INCORRECT));
+        SolveurImpl solveur = new SolveurImpl(new GrilleImpl(GRILLE_INCORRECTE));
         assertEquals(false, solveur.verifierGrille());
     }
 
@@ -110,11 +99,10 @@ public final class SolveurTest {
     @Test
     public void testResoudre() {
         SolveurImpl solveurGrilleCorrecteResolue =
-                new SolveurImpl(new GrilleImpl(SUDOKU_CORRECT_RESOLUE));
-        assertEquals(true, solveurGrilleCorrecteResolue.resoudre());
-        SolveurImpl solveurGrilleCorrecteNonResolue =
-                new SolveurImpl(new GrilleImpl(SUDOKU_CORRECT_RESOLUE));
-        assertEquals(true, solveurGrilleCorrecteNonResolue.resoudre());
+                new SolveurImpl(new GrilleImpl(GRILLE_CORRECTE));
+        assertEquals("Test de la méthode resoudre().",
+                      true,
+                      solveurGrilleCorrecteResolue.resoudre());
     }
 
     /**
@@ -123,7 +111,7 @@ public final class SolveurTest {
     @Test
     public void testResolu() {
         SolveurImpl solveur
-                = new SolveurImpl(new GrilleImpl(SUDOKU_CORRECT_RESOLUE));
+                = new SolveurImpl(new GrilleImpl(GRILLE_CORRECTE));
         boolean solution = solveur.resolu();
         assertEquals(true, solution);
     }
@@ -135,7 +123,7 @@ public final class SolveurTest {
     public void testResoluAvecException() {
         try {
             SolveurImpl solveur
-                    = new SolveurImpl(new GrilleImpl(SUDOKU_INCORRECT));
+                    = new SolveurImpl(new GrilleImpl(GRILLE_INCORRECTE));
             solveur.resolu();
             fail("L'exception aurait du être levé pour grille non valide");
         } catch (IllegalArgumentException e) {
@@ -149,15 +137,15 @@ public final class SolveurTest {
     @Test
     public void testafficherSolution() {
         //test avec une grille incorrecte
-        SolveurImpl solveur = new SolveurImpl(new GrilleImpl(SUDOKU_INCORRECT));
+        SolveurImpl solveur = new SolveurImpl(new GrilleImpl(GRILLE_INCORRECTE));
         solveur.afficherSolution();
         //test avec une grille non complète
         SolveurImpl solveur2
-                = new SolveurImpl(new GrilleImpl(SUDOKU_CORRECT_RESOLUE));
+                = new SolveurImpl(new GrilleImpl(GRILLE_CORRECTE));
         solveur2.afficherSolution();
         //cas de grille à dimensions incorrecte (msg d'erreur attendu)
         SolveurImpl solveur3
-                = new SolveurImpl(new GrilleImpl(SUDOKU_INCORRECT2));
+                = new SolveurImpl(new GrilleImpl(GRILLE_INCORRECTE_2));
         solveur3.afficherSolution();
     }
 
