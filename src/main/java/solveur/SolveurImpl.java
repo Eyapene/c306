@@ -56,21 +56,9 @@ public final class SolveurImpl implements ISolveur {
     }
 
     /**
-     * Verification de la résolution de la grille.
-     *
-     * @return true si grille resolue, false sinon
-     */
-    public boolean resolu() {
-        if (!verifierGrille()) {
-            throw new IllegalArgumentException("Grille non valide.");
-        }
-        return true;
-    }
-
-    /**
      * Résolution de la grille de Sudoku.
      *
-     * @return boolean
+     * @return si une solution est disponible, false sinon
      */
     public boolean resoudre() {
         int dimension;
@@ -92,6 +80,18 @@ public final class SolveurImpl implements ISolveur {
                     return false;
                 }
             }
+        }
+        return true;
+    }
+    
+    /**
+     * Verification de la résolution de la grille.
+     *
+     * @return true si la grille est resolue, false sinon
+     */
+    public boolean resolu() {
+        if (!verifierGrille()) {
+            throw new IllegalArgumentException("Grille non valide.");
         }
         return true;
     }

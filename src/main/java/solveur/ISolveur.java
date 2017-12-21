@@ -13,7 +13,7 @@ public interface ISolveur {
     /**
      * Teste la validité de la grille.
      *
-     * @return boolean
+     * @return true si la grille est valide, false sinon
      */
     boolean verifierGrille();
 
@@ -22,7 +22,7 @@ public interface ISolveur {
      *
      * @throws IllegalArgumentException si la grille à résoudre n'est pas
      * valable ou si aucune solution n'a pu être calculée
-     * @return boolean
+     * @return si une solution est disponible, false sinon
      */
     boolean resoudre();
 
@@ -30,7 +30,7 @@ public interface ISolveur {
      * Verifie si la grille est résolue.
      *
      *@throws IllegalArgumentException si la grille non valide
-     *@return boolean
+     *@return true si la grille est resolue, false sinon
      */
     boolean resolu();
 
