@@ -22,7 +22,7 @@ public interface ISolveur {
      *
      * @throws IllegalArgumentException si la grille à résoudre n'est pas
      * valable ou si aucune solution n'a pu être calculée
-     * @return si une solution est disponible, false sinon
+     * @return true si une solution est disponible, false sinon
      */
     boolean resoudre();
 

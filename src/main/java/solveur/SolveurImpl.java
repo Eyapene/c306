@@ -58,7 +58,7 @@ public final class SolveurImpl implements ISolveur {
     /**
      * Résolution de la grille de Sudoku.
      *
-     * @return si une solution est disponible, false sinon
+     * @return true si une solution est disponible, false sinon
      */
     public boolean resoudre() {
         int dimension;
