@@ -5,7 +5,7 @@ import grille.GrilleImpl;
 
 /**
  *
- * Classe d'implémentation de linterface solveur.
+ * Classe d'implémentation de l'interface solveur.
  *
  * @author ATSOU Komi Bi-Ayéfo
  * @author BOKOBOSSO Eyapènè
@@ -33,9 +33,11 @@ public final class SolveurImpl implements ISolveur {
      * @return true si la grille est valide, false sinon
      */
     public boolean verifierGrille() {
-        char[][] grillecontent = grille.getGrille();
-        for (int i = 0; i < grille.getDimension(); i = i + 1) {
-            for (int j = 0; j < grille.getDimension(); j = j + 1) {
+        char[][] grillecontent = grille.getGrille().clone();
+        int dimension;
+        dimension = grille.getDimension();
+        for (int i = 0; i < dimension; i++) {
+            for (int j = 0; j < dimension; j++) {
                 if (grillecontent[i][j] != Grille.EMPTY) {
                     char tmp = grillecontent[i][j];
                     grillecontent[i][j] = Grille.EMPTY;
@@ -71,22 +73,24 @@ public final class SolveurImpl implements ISolveur {
      * @return boolean
      */
     public boolean resoudre() {
-        for (int i = 0; i < grille.getDimension(); i++) {
-            for (int j = 0; j < grille.getDimension(); j++) {
-//                if (grille.getGrille()[i][j] == GrilleImpl.EMPTY) {
-                    for (int k = 0; k < grille.getDimension(); k = k + 1) {
-                        char val = Grille.POSSIBLE_9[k];
-//                        try {
-//                            grille.setValue(i + 1, j + 1, val);
-//                            if (resoudre()) {
-//                                return true;
-//                            }
-//                        } catch (IllegalArgumentException ex) {
-//                            System.out.println("Erreur. Valeur non valide.");
-//                        }
-                    }
-//                    return false;
-//                }
+        int dimension;
+        dimension = grille.getDimension();
+        for (int i = 0; i < dimension; i++) {
+            for (int j = 0; j < dimension; j++) {
+                if (grille.getGrille()[i][j] == GrilleImpl.EMPTY) {
+                for (int k = 0; k < dimension; k = k + 1) {
+                    char val = Grille.POSSIBLE_9[k];
+                        try {
+                            grille.setValue(i + 1, j + 1, val);
+                            if (resoudre()) {
+                                return true;
+                            }
+                        } catch (IllegalArgumentException ex) {
+                            System.out.println("Erreur. Valeur non valide.");
+                        }
+                }
+                    return false;
+                }
             }
         }
         return true;
@@ -97,20 +101,22 @@ public final class SolveurImpl implements ISolveur {
      */
     public void afficherSolution() {
         int part = 3;
-            for (int i = 0; i < grille.getDimension(); ++i) {
-                if (i % part == 0) {
-                    System.out.println(" -----------------------");
-                }
-                for (int j = 0; j < grille.getDimension(); ++j) {
-                    if (j % part == 0) {
-                        System.out.print("| ");
-                    }
-                    System.out.print(grille.getGrille()[i][j]);
-                    System.out.print(' ');
-                }
-                System.out.println("|");
+        int dimension;
+        dimension = grille.getDimension();
+        for (int i = 0; i < dimension; ++i) {
+            if (i % part == 0) {
+                System.out.println(" -----------------------");
             }
-            System.out.println(" -----------------------");
+            for (int j = 0; j < dimension; ++j) {
+                if (j % part == 0) {
+                    System.out.print("| ");
+                }
+                System.out.print(grille.getGrille()[i][j]);
+                System.out.print(' ');
+            }
+            System.out.println("|");
+        }
+        System.out.println(" -----------------------");
     }
 
 }

@@ -137,17 +137,10 @@ public final class SolveurTest {
      */
     @Test
     public void testafficherSolution() {
-        //test avec une grille incorrecte
-//        SolveurImpl solveur = new SolveurImpl(new GrilleImpl(GRILLE_INCORRECTE));
-//        solveur.afficherSolution();
         //test avec une grille non complète
         SolveurImpl solveur2
                 = new SolveurImpl(new GrilleImpl(GRILLE_CORRECTE));
         solveur2.afficherSolution();
-        //cas de grille à dimensions incorrecte (msg d'erreur attendu)
-//        SolveurImpl solveur3
-//                = new SolveurImpl(new GrilleImpl(GRILLE_INCORRECTE_2));
-//        solveur3.afficherSolution();
     }
 
 }
